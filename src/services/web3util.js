@@ -72,3 +72,60 @@ export function getMetaCoin (createNew) {
     })
   })
 }
+
+export function getAccount () {
+  return getWeb3().then(w3 => {
+    return w3.eth.getAccounts()
+  }).then((accounts) => {
+    if (accounts.length <= 0) {
+      throw new Error('No accounts available. Maybe the wallet is locked. Please unlock your wallet and reload the page.')
+    }
+    return accounts[0]
+  })
+}
+
+export function getBalance () {
+  let account = null
+  return getAccount().then(acc => {
+    account = acc
+    return getMetaCoin()
+  }).then((instance) => {
+    return instance.getBalance.call(account)
+  }).then((balance) => {
+    return balance.valueOf()
+  })
+}
+
+let transferEvent = null
+export function installEvent (callback) {
+  let web3 = null
+  let metaCoin = null
+  let blockNumber
+  let account
+  getMetaCoin(true).then(mc => {
+    metaCoin = mc
+    return getWeb3()
+  }).then(w3 => {
+    web3 = w3
+    return web3.eth.getBlockNumber()
+  }).then(bn => {
+    blockNumber = bn
+    return getAccount()
+  }).then(acc => {
+    account = acc
+    console.log(blockNumber + ':latest')
+
+    new Promise((resolve, reject) => {
+      if (transferEvent !== null) {
+        return transferEvent.stopWatching(resolve)
+      } else {
+        resolve()
+      }
+    }).then(() => {
+      transferEvent = metaCoin.Transfer({'_to': account}, {fromBlock: blockNumber, toBlock: 'latest'})
+      transferEvent.watch(callback)
+    })
+  }).catch(e => {
+    console.log(e.message)
+  })
+}

@@ -1,6 +1,7 @@
 <template>
   <div class="text-center text-muted small">
-    {{contractAddress}} | {{network}} | {{web3version}}
+    <a :href="explorerContractUrl">{{contractAddress}}</a>
+     | Network {{network}} | web3.js@{{web3version}}
   </div>
 </template>
 
@@ -16,6 +17,11 @@ export default {
       web3version: '0'
     }
   },
+  computed: {
+    explorerContractUrl () {
+      return 'https://ropsten.etherscan.io/address/' + this.contractAddress
+    }
+  },
   methods: {
     loadContractAddress () {
       return getMetaCoin().then(instance => {
@@ -24,14 +30,14 @@ export default {
     },
     loadNetwork () {
       return getWeb3().then(web3 => {
-        return web3.eth.net.getNetworkType()
+        return web3.eth.net.getId()
       }).then((name) => {
         this.network = name
       })
     },
     loadWeb3version () {
       return getWeb3().then(web3 => {
-        this.web3version = 'web3.js@' + web3.version
+        this.web3version = web3.version
       })
     }
   },
