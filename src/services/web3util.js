@@ -1,4 +1,4 @@
-import Web3 from 'Web3'
+import Web3 from 'web3'
 import MetaCoinArtifacts from '@/../build/contracts/MetaCoin.json'
 import { default as contract } from 'truffle-contract'
 

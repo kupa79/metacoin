@@ -6,7 +6,6 @@ import router from './router'
 
 import './validation'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false

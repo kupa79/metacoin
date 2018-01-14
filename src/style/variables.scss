@@ -1,0 +1,22 @@
+// ################################## 
+// Wird für *.vue von webpack geladen
+// ##################################
+
+$red: #bb0000;
+$body-bg: #ffd;
+$primary: #070;
+
+$grid-breakpoints: (
+    sm: 0,
+    md: 768px,
+    lg: 1024px
+);
+
+$grid-gutter-width: 15px;
+
+$container-max-widths: (
+    sm: 960px + $grid-gutter-width
+);
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";

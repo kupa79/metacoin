@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :for="fid">{{label}}</label>
+    <label :for="fid" class="text-xs-right">{{label}}</label>
     <input
       class="form-control"
       v-bind:class="{ 'is-invalid': errors.has(fid) }"
