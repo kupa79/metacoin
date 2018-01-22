@@ -2,7 +2,7 @@
 // ## How to build
 // npm uninstall web3
 // npm install web3@0.18.4 ethereumjs-wallet bip39 web3-provider-engine@8.6.1 zeppelin-solidity --save-dev
-// truffle migrate
+// truffle migrate --network ropsten
 // npm uninstall web3
 // npm install web3
 
