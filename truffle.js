@@ -1,10 +1,6 @@
-// This script requires web3@0.18.4!!!
 // ## How to build
-// npm uninstall web3
-// npm install web3@0.18.4 ethereumjs-wallet bip39 web3-provider-engine@8.6.1 zeppelin-solidity --save-dev
+// npm install truffle-hdwallet-provider
 // truffle migrate --network ropsten
-// npm uninstall web3
-// npm install web3
 
 var mnemonic = "dismiss involve pelican need grocery elegant buzz toddler wolf fruit betray series"
 var HDWalletProvider = require("truffle-hdwallet-provider");
