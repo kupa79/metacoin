@@ -2,7 +2,7 @@
 // npm install truffle-hdwallet-provider
 // truffle migrate --network ropsten
 
-var mnemonic = "dismiss involve pelican need grocery elegant buzz toddler wolf fruit betray series"
+var mnemonic = "<mnemonic>"
 var HDWalletProvider = require("truffle-hdwallet-provider");
 
 module.exports = {
